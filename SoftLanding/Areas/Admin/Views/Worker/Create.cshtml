@@ -1,0 +1,27 @@
+﻿@using SoftLanding.Areas.ViewModels
+@model CreateWorkerVm
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Fullname">Name</label>
+        <input asp-for="Fullname" class="form-control" placeholder="Enter Name">
+        <span asp-validation-for="Fullname"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DesignationID">Name</label>
+        <select class="form-control"
+                asp-for="DesignationID"
+                asp-items="@(new SelectList(Model.Designations, "Id", "Name"))">
+            <option value="">Select Designation</option>
+        </select>
+        <span asp-validation-for="DesignationID"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageFile">Image</label>
+        <input asp-for="ImageFile" class="form-control">
+        <span asp-validation-for="ImageFile"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" asp-action="Create">Submit</button>
+    <button class="btn btn-secondary" asp-action="Index">Cancel</button>
+</form>

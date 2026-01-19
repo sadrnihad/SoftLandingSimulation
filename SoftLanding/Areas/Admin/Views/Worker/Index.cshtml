@@ -1,0 +1,65 @@
+﻿@using SoftLanding.Models
+@model List<Worker>
+
+
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+    <p class="mb-4">
+        DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the <a target="_blank"
+                                                                   href="https://datatables.net">official DataTables documentation</a>.
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Workers</h6>
+            <a asp-area="Admin" asp-action="Create"  class="btn btn-secondary">Create</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>FullName</th>
+                            <th>Designation</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        @foreach(Worker worker in Model)
+                        {
+                            <tr>
+                                <td>@worker.Id</td>
+                                <td>@worker.Fullname</td>
+                                <td>@worker.Designation.Name</td>
+                                <td>
+                                    <img src="~/assets/images/@worker.Image?" >
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@worker.Id" class="btn btn-primary">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@worker.Id" class="btn btn-danger">Delete</a>
+                                    
+                                </td>
+                            </tr>
+                        }
+                        
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+            </div>
+<!-- End of Main Content -->
